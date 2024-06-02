@@ -1,12 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import router from "./routes/user-routes.js";
 
 const app = express();
 dotenv.config();
 
 app.use(express.json());
-
+app.use("/api/user", router);
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
